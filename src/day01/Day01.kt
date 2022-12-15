@@ -1,6 +1,7 @@
 package day01
 
-import readInput
+import utils.println
+import utils.readInput
 
 @OptIn(ExperimentalUnsignedTypes::class)
 fun main() {
@@ -34,6 +35,8 @@ fun main() {
         return sortedCals[0] + sortedCals[1] + sortedCals[2]
     }
 
-    println(part1(input))
-    println(part2())
+    check(part1(input) == 69206u)
+    check(part2() == 197400u)
+    part1(input).println()
+    part2().println()
 }
