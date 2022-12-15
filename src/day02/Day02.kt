@@ -1,6 +1,7 @@
 package day02
 
-import readInput
+import utils.println
+import utils.readInput
 import java.text.ParseException
 
 fun main() {
@@ -45,25 +46,16 @@ fun main() {
             /**
              * TODO("This can probably be improved")
              */
-            when {
-                strategy.startsWith("A") && strategy.endsWith("X") -> score += 3u
-
-                strategy.startsWith("A") && strategy.endsWith("Y") -> score += 4u // this
-
-                strategy.startsWith("A") && strategy.endsWith("Z") -> score += 8u
-
-                strategy.startsWith("B") && strategy.endsWith("X") -> score += 1u // this
-
-                strategy.startsWith("B") && strategy.endsWith("Y") -> score += 5u
-
-                strategy.startsWith("B") && strategy.endsWith("Z") -> score += 9u
-
-                strategy.startsWith("C") && strategy.endsWith("X") -> score += 2u
-
-                strategy.startsWith("C") && strategy.endsWith("Y") -> score += 6u
-
-                strategy.startsWith("C") && strategy.endsWith("Z") -> score += 7u
-
+            score += when (strategy) {
+                "A X" -> 3u
+                "A Y" -> 4u
+                "A Z" -> 8u
+                "B X" -> 1u
+                "B Y" -> 5u
+                "B Z" -> 9u
+                "C X" -> 2u
+                "C Y" -> 6u
+                "C Z" -> 7u
                 else -> throw ParseException(
                     "There was an unknown strategy combination in the input list at line ${index + 1}", index
                 )
@@ -72,6 +64,9 @@ fun main() {
         return score
     }
 
-    println(part1(input))
-    println(part2(input))
+
+    check(part1(input) == 13009u)
+    check(part2(input) == 10398u)
+    part1(input).println()
+    part2(input).println()
 }
